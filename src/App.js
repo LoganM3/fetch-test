@@ -1,7 +1,7 @@
-import Form from "react-bootstrap/Form";
-import { useState, useEffect } from "react";
+import Form from 'react-bootstrap/Form';
+import { useState, useEffect } from 'react';
 import './App.css';
-import { Button } from "react-bootstrap";
+import { Button } from 'react-bootstrap';
 
 function App() {
 
@@ -19,12 +19,11 @@ function App() {
 
    const handleSubmit = (e) => {
      e.preventDefault();
-     fetch('https://frontend-take-home.fetchrewards.com/form'
-    , {
-      method: "POST",
-      mode: "cors",
+     fetch('https://frontend-take-home.fetchrewards.com/form', 
+     {
+      method: 'POST',
       headers: { 
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(form),
     })
@@ -40,53 +39,49 @@ function App() {
   console.log(form)
 
   return (
-    <div className="App">
-  <Form action="submit">
-  <Form.Group className="Name" controlId="">
+    <div className='App'>
+  <Form >
+  <Form.Group className='Name' controlId=''>
               <Form.Label>Full Name</Form.Label>
               <Form.Control
-                type="text"
-                name="name"
-                placeholder="add name"
+                type='text'
+                name='name'
+                placeholder='add name'
                 onChange={updateForm}
-                 value={form.name}
-                required="true"
+                required='true'
               />
             </Form.Group>
          
          
-             <Form.Group className="email" controlId="">  
+             <Form.Group className='email' controlId=''>  
               <Form.Label>Email</Form.Label>
               <Form.Control
-                type="email"                         
-                name="email"
-                placeholder="example@test.com"
-                 required="true"
+                type='email'                         
+                name='email'
+                placeholder='example@test.com'
+                 required='true'
                 onChange={updateForm}
-                value={form.email}
               />
             </Form.Group> 
 
-            <Form.Group className="password" controlId="">
+            <Form.Group className='password' controlId=''>
               <Form.Label>Password</Form.Label>
               <Form.Control 
-              type="password" 
-              name="Password"
-              placeholder="password" 
-               required="true"
+              type='password' 
+              name='Password'
+              placeholder='password' 
+               required='true'
               onChange={updateForm}
-              value={form.password}
               />
               
             </Form.Group>
 
-            <Form.Group className="dropDown" controlId="">
+            <Form.Group className='dropDown' controlId=''>
               <Form.Label>occupation</Form.Label>
              <Form.Select 
-              required="true"  
-             name="occupation"
+              required='true'  
+             name='occupation'
             onChange={updateForm}
-             value={form.occupation}
              >
                <option >-select job-</option>
                  {info?.occupations.map((occupation, index) =>(
@@ -97,13 +92,12 @@ function App() {
              </Form.Select>
             </Form.Group>
            
-            <Form.Group className="dropDown" controlId="">
+            <Form.Group className='dropDown' controlId=''>
               <Form.Label>State</Form.Label>
              <Form.Select 
-            required="true"  
-             name="state"
+            required='true'  
+             name='state'
             onChange={updateForm}
-             value={form.state}
              >
              <option>-Select your state-</option>
              {info?.states.map((state, index) =>(
@@ -113,7 +107,7 @@ function App() {
                      ))}  
              </Form.Select>
              </Form.Group>
-              <Button type="submit" onClick={handleSubmit}> Submit </Button>
+              <Button type='submit' onClick={handleSubmit}> Submit </Button>
           </Form>
     </div>
   );
