@@ -7,6 +7,7 @@ function App() {
 
   const [form, setForm] = useState({});
   const [info, setInfo] = useState()
+  const [validated, setValidated] = useState(false);
 
   useEffect (() => {
     fetch('https://frontend-take-home.fetchrewards.com/form')
@@ -19,6 +20,13 @@ function App() {
 
    const handleSubmit = (e) => {
      e.preventDefault();
+    //  const form = e.currentTarget;
+    // if (form.checkValidity() === false) {
+    //     e.preventDefault();
+    //     e.stopPropagation();
+    // }
+    // setValidated(true);
+
      fetch('https://frontend-take-home.fetchrewards.com/form', 
      {
       method: 'POST',
@@ -27,7 +35,9 @@ function App() {
       },
       body: JSON.stringify(form),
     })
-     .catch(err => alert(err.message))
+    .then((res) => res.json())
+    .then((data) => alert('Form Submitted Successfully'))
+    .catch((err) => alert(err.message));
   }
 
 
@@ -40,44 +50,49 @@ function App() {
 
   return (
     <div className='App'>
+      <div className='img-container'>
+        <img src='fetch.png' className='logo'/>
+     </div>
+      <div className='form-container' id='fmc'>
   <Form >
-  <Form.Group className='Name' controlId=''>
+    <h1>Please Fill Out </h1>
+  <Form.Group className='Name' id='inner-container'>
               <Form.Label>Full Name</Form.Label>
-              <Form.Control
+              <Form.Control className='input'
                 type='text'
                 name='name'
                 placeholder='add name'
+                required
                 onChange={updateForm}
-                required='true'
               />
             </Form.Group>
          
-             <Form.Group className='email' controlId=''>  
+             <Form.Group className='email' id='inner-container'>  
               <Form.Label>Email</Form.Label>
-              <Form.Control
+              <Form.Control className='input'
                 type='email'                         
                 name='email'
                 placeholder='example@test.com'
-                 required='true'
+                 required
                 onChange={updateForm}
               />
             </Form.Group> 
 
-            <Form.Group className='password' controlId=''>
+            <Form.Group className='password' id='inner-container'>
               <Form.Label>Password</Form.Label>
-              <Form.Control 
+              <Form.Control  className='input'
               type='password' 
               name='password'
               placeholder='password' 
-               required='true'
+               required
               onChange={updateForm}
               />
             </Form.Group>
 
-            <Form.Group className='dropDown' controlId=''>
+            <Form.Group className='dropDown' id='inner-container'>
               <Form.Label>occupation</Form.Label>
-             <Form.Select 
-              required='true'  
+             <Form.Select className='input'
+              required  
              name='occupation'
             onChange={updateForm}
              >
@@ -90,10 +105,10 @@ function App() {
              </Form.Select>
             </Form.Group>
            
-            <Form.Group className='dropDown' controlId=''>
+            <Form.Group className='dropDown' id='inner-container'>
               <Form.Label>State</Form.Label>
-             <Form.Select 
-            required='true'  
+             <Form.Select className='input'
+            required  
              name='state'
             onChange={updateForm}
              >
@@ -105,8 +120,12 @@ function App() {
                      ))}  
              </Form.Select>
              </Form.Group>
-              <Button type='submit' onClick={handleSubmit}> Submit </Button>
+             <br/>
+               <div  className='btn'>
+                 <Button type='submit' onClick={handleSubmit}> Submit </Button>
+               </div>
           </Form>
+          </div>
     </div>
   );
 }

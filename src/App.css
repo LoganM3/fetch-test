@@ -1,8 +1,52 @@
-*,
-*::after,
-*::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
+
+.App{
+  display: flex;
+  align-items: center;
+  background: radial-gradient(orange, #e44444c7);
+  height: 100vh;
 }
+
+
+.logo{
+  height: 300px;
+  width: 300px;
+}
+
+.img-container{
+  width:fit-content;
+  padding-right: 280px;
+  margin-bottom: 415px;
+}
+
+.form-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: black solid; */
+  width: 400px;
+  height: 450px;
+  background-color: rgba(255, 255, 255, 0.5);
+  font-weight: bold;
+  font-size: x-large;
+  border-radius: 10%;
+}
+
+#inner-container{
+  /* background-color: rgba(255, 255, 255, 0.5); */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  border-radius: 10%;
+  font-weight: 800;
+}
+
+
 
