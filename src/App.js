@@ -7,7 +7,7 @@ function App() {
 
   const [form, setForm] = useState({});
   const [info, setInfo] = useState()
-  const [validated, setValidated] = useState(false);
+
 
   useEffect (() => {
     fetch('https://frontend-take-home.fetchrewards.com/form')
@@ -20,20 +20,13 @@ function App() {
 
    const handleSubmit = (e) => {
      e.preventDefault();
-    //  const form = e.currentTarget;
-    // if (form.checkValidity() === false) {
-    //     e.preventDefault();
-    //     e.stopPropagation();
-    // }
-    // setValidated(true);
-
      fetch('https://frontend-take-home.fetchrewards.com/form', 
      {
       method: 'POST',
       headers: { 
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(form),
+      body: JSON.stringify(form)
     })
     .then((res) => res.json())
     .then((data) => alert('Form Submitted Successfully'))
@@ -46,6 +39,7 @@ function App() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
   
+  
   console.log(form)
 
   return (
@@ -54,7 +48,7 @@ function App() {
         <img src='fetch.png' className='logo'/>
      </div>
       <div className='form-container' id='fmc'>
-  <Form >
+  <Form  onSubmit={handleSubmit} >
     <h1>Please Fill Out </h1>
   <Form.Group className='Name' id='inner-container'>
               <Form.Label>Full Name</Form.Label>
@@ -109,7 +103,7 @@ function App() {
               <Form.Label>State</Form.Label>
              <Form.Select className='input'
             required  
-             name='state'
+            name='state'
             onChange={updateForm}
              >
              <option>-Select your state-</option>
@@ -122,7 +116,7 @@ function App() {
              </Form.Group>
              <br/>
                <div  className='btn'>
-                 <Button type='submit' onClick={handleSubmit}> Submit </Button>
+                 <Button type='submit'> Submit </Button>
                </div>
           </Form>
           </div>
