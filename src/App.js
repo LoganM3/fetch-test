@@ -6,7 +6,7 @@ import { Button } from 'react-bootstrap';
 function App() {
 
   const [form, setForm] = useState({});
-   const [info, setInfo] = useState()
+  const [info, setInfo] = useState()
 
   useEffect (() => {
     fetch('https://frontend-take-home.fetchrewards.com/form')
@@ -52,7 +52,6 @@ function App() {
               />
             </Form.Group>
          
-         
              <Form.Group className='email' controlId=''>  
               <Form.Label>Email</Form.Label>
               <Form.Control
@@ -68,12 +67,11 @@ function App() {
               <Form.Label>Password</Form.Label>
               <Form.Control 
               type='password' 
-              name='Password'
+              name='password'
               placeholder='password' 
                required='true'
               onChange={updateForm}
               />
-              
             </Form.Group>
 
             <Form.Group className='dropDown' controlId=''>
